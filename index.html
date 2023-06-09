@@ -1,0 +1,75 @@
+<!DOCTYPE html5>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Chat</title>
+
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/Botoes.css">
+
+</head>
+
+<body>
+
+    <main>
+        
+        <div class="Login-SingUp" id="Login-SingUp">
+
+            <div class="login Ativo" id="login">
+                
+                <div class="Inputs">
+                    <input required type="email" id="Email" placeholder="Email">
+                </div>
+                <div class="Inputs">
+                    <input required type="password" id="Password" placeholder="Password">
+                </div>
+
+                <div class="Inputs buttons">
+                    <button class="Normal" onclick="LogIn_()" type="submit">Login</button>
+                    <button onclick="Mudar()" class="Normal "type="button">Cadastrar-se</button>
+                </div>
+
+            </div>
+
+            <div class="SingUp " id="SingUp">
+                <div class="Inputs">
+                    <input required type="text" id="UserName" placeholder="UserName">
+                </div>
+                <div class="Inputs">
+                    <input required type="email" id="Email" placeholder="Email">
+                </div>
+                <div class="Inputs">
+                    <input required type="password" id="Password" placeholder="Password">
+                </div>
+                <div class="Inputs">
+                    <input required type="password" id="ConfirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="Inputs">
+                    <label id="FileButton" for="FileINP">Escolha sua foto de perfil</label>
+                </div>
+                <div class="Inputs">
+                    <img id="ImagePrevil" height="70" width="70">
+                </div>
+                <div class="Inputs buttons" style="margin-top: 5%;">
+                    <button class="Normal" onclick="SingUp_()" type="submit">Cadastrar-se</button>
+                    <button onclick="Mudar()" class="Normal "type="button">Login</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <input type="file" id="FileINP">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/firebase.js"></script>
+
+</body>
+
+</html>

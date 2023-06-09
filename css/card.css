@@ -1,0 +1,80 @@
+.Card {
+    display: flex;
+    position: relative;
+}
+
+.CardPFP img,
+.CardPFP {
+    overflow: hidden;
+    min-height: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.CardTextos {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 15px;
+
+    border-radius: 10px;
+}
+
+.CardTextos .Topo {
+    display: flex;
+}
+
+
+.Hora {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.Mensagem {
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+/* card do sender*/
+
+.Card.sender {
+    justify-content: end;
+    
+}
+
+.Card.sender .CardTextos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/*Backgrounds*/
+.Card.Sender .CardTextos {
+    background: var(--Sender);
+    border-top-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+}
+.Card.Sender .CardTextos .Topo {
+    justify-content: end;
+}
+.Card.Sender .MesgIcon{
+    fill: var(--Sender);
+    position: absolute;
+    right: 52;
+    top: 0px;
+}
+
+.Card.Addressee .CardTextos {
+    background: var(--Addressee);
+    border-top-left-radius: 0;
+}
+.Card.Addressee .MesgIcon{
+    fill: var(--Addressee);
+    position: absolute;
+    left: 52;
+    top: 0px;
+}

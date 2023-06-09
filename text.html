@@ -1,0 +1,51 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/Chat.css">
+    <link rel="stylesheet" href="css/Botoes.css">
+</head>
+<body>
+    
+    <main>
+
+        <div id="Color_Mode_Button" class="Color_Mode_Button">
+            
+            <div class="Sol_Lua">
+                <div class="objetos">
+                    <div class="Circulo"></div>
+                    <div class="Circulo_Lua"></div>
+                </div>
+            </div>
+
+            <div class="nuvens">
+                <div class="Circulo_nuven Um"></div>
+                <div class="Circulo_nuven Dois"></div>
+                <div class="Circulo_nuven Tres"></div>
+                <div class="Circulo_nuven Quatro"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        let Color_Mode_Button = document.getElementById('Color_Mode_Button')
+
+        Color_Mode_Button.addEventListener('click', ()=>{
+            if(Color_Mode_Button.classList.contains('Ativo')){
+                Color_Mode_Button.classList.remove('Ativo')
+            }else {
+                Color_Mode_Button.classList.add('Ativo')
+            }
+        })
+
+    </script>
+
+</body>
+</html>

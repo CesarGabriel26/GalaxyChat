@@ -1,0 +1,191 @@
+:root {
+
+    /*! Botão normal*/
+    --Normal_Bg: rgb(255, 255, 255);
+    --Normal_Color: rgb(0, 0, 0);
+    --Normal_Hover: orange;
+
+    /* Send */
+    --Send_Bg_Hover: rgb(110, 110, 110);
+    --Send_Color: white;
+}
+
+button {
+    height: 40px;
+    width: fit-content;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+#FileButton,
+button.Normal {
+    background: var(--Normal_Bg);
+    color: var(--Normal_Color);
+    font-size: 20px;
+}
+
+#FileButton:hover,
+button.Normal:hover {
+    background: var(--Normal_Hover);
+}
+
+button.chatBtn {
+    background: transparent;
+    color: var(--Textos_Normal);
+    font-size: 20px;
+}
+
+button.chatBtn:hover {
+    background: var(--Send_Bg_Hover);
+}
+
+button.HeaderBTN {
+    background: transparent;
+    color: var(--Textos_Normal);
+    margin-left: 10px;
+}
+button.HeaderBTN svg {
+    width: 30px;
+    height: 30px;
+}
+button.HeaderBTN:hover {
+    background: var(--Send_Bg_Hover);
+}
+
+
+
+/*Togle buttons  Color_Mode_Button ==================================================================*/
+.Color_Mode_Button {
+    width: 70px;
+    height: 30px;
+    background: lightblue;
+    border-radius: 20px;
+    border: 2px solid rgb(219, 219, 101);
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    transition: .5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.Color_Mode_Button .Sol_Lua {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    overflow: hidden;
+    transition: .5s ease-in-out;
+}
+
+.Color_Mode_Button .objetos {
+    position: relative;
+    display: flex;
+    z-index: 2;
+}
+
+.Color_Mode_Button .Circulo {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: yellow;
+    transition: .5s ease-in-out;
+}
+
+.Color_Mode_Button .Circulo_Lua {
+    height: 15px;
+    width: 15px;
+    background-color: yellow;
+    position: absolute;
+    border-radius: 50%;
+    left: 7px;
+    top: 2.5px;
+    transition: .5s ease-in-out;
+}
+
+
+.Color_Mode_Button .nuvens {
+    display: flex;
+    position: absolute;
+    left: 22px;
+    transition: .5s ease-in-out;
+}
+
+.Color_Mode_Button .Circulo_nuven {
+    height: 20px;
+    width: 20px;
+    background: ghostwhite;
+    border-radius: 50%;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+/**/
+.Color_Mode_Button .Circulo_nuven.Um { left: 0px;}
+
+.Color_Mode_Button .Circulo_nuven.Dois { left: 10px; top: -3px;}
+
+.Color_Mode_Button .Circulo_nuven.Tres {  left: 20px; }
+
+.Color_Mode_Button .Circulo_nuven.Quatro { left: 30px; top: -4px;}
+
+/* */
+
+
+.Color_Mode_Button.Ativo {
+    background-color: rgb(5, 11, 65);
+    border: 2px solid darkblue;
+}
+
+.Color_Mode_Button.Ativo .Sol_Lua {
+    left: 43px;
+    overflow: visible;
+}
+
+.Color_Mode_Button.Ativo .Circulo {
+    background-color: rgb(248, 227, 106);
+}
+
+.Color_Mode_Button.Ativo .Circulo_Lua {
+    background-color: rgb(5, 11, 65);
+}
+
+.Color_Mode_Button.Ativo .nuvens {
+    left: -10;
+}
+
+/*Togle buttons ==================================================================*/
+.TogleButton {
+    width: 70px;
+    height: 30px;
+    background: var(--Header_BG);
+    border-radius: 20px;
+    border: 2px solid var(--Borda);
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    transition: .5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+.TogleButton .Circulo {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--Contatos_hover_BG);
+    position: absolute;
+    left: 2px;
+    overflow: hidden;
+    transition: .5s ease-in-out;
+}
+.TogleButton.Ativo .Circulo {
+    left: 43px;
+}

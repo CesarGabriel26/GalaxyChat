@@ -1,0 +1,129 @@
+main {
+    height: 100%;
+    width: 100%;
+    background: var(--BG);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    transition: .5s ease-in-out;
+}
+
+.Left {
+    height: 100%;
+    width: 30%;
+    border-right: 2px solid var(--Borda);
+    transition: .5s ease-in-out;
+}
+
+.Left .LeftHeader .Buttons {
+    width: calc(100% - 60px);
+    display: flex;
+    justify-content: end;
+}
+
+/**/
+
+.Right {
+    height: 100%;
+    width: 70%;
+    position: relative;
+    transition: .5s ease-in-out;
+}
+
+.ConfigHeader,
+.LeftHeader,
+.RightHeader {
+    background: var(--Header_BG);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: .5s ease-in-out;
+}
+
+/*Right container*/
+.UserPfp img,
+.UserPfp {
+    overflow: hidden;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+/*Left container*/
+.Chat {
+    width: 100%;
+    height: calc(100% - (90px + 60px));
+    overflow-y: scroll;
+
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+}
+
+.TextInput {
+    background: var(--Header_BG);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    
+}
+
+.TextInput input {
+    height: 40px;
+    width: 90%;
+    border-radius: 10px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+
+    border: none;
+    outline: none;
+    background: var(--Mesage_INP_BG);
+}
+
+/*? card dos contatos*/
+.Contato_Card {
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid var(--Contatos_hover_BG);
+    transition: .5s ease-in-out;
+}
+.Contato_Card:hover {
+    background: var(--Contatos_hover_BG);
+}
+.ContactPFP img,
+.ContactPFP {
+    overflow: hidden;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.textos {
+    color: var(--Textos_Normal);
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+}
+.textos p {width: fit-content;}
+
+/*todo Configurações*/
+.Configs {
+    width: 70%;
+    height: 100%;
+    background: var(--BG);
+    position: absolute;
+    transition: .5s ease-in-out;
+    right: -1000;
+}
+
+.Main {
+    padding: 10px;
+}

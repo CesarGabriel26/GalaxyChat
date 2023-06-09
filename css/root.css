@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--Textos_Normal);
+}
+
+.ionicon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Dark mode */
+
+:root {
+    --BG: #111B21;
+    --Contatos_hover_BG: #2A3942;
+
+    --Header_BG: #202C33;
+    --Borda: #23333d;
+
+    --Textos_Normal: white;
+    --Textos_PlaceHolder: #ffffff96;
+
+    --Mesage_INP_BG: #2A3942;
+
+    /*! cores solidas*/
+    --Orange: #ff5100;
+
+    /*cores do site*/
+    --Pri: #ca00ff;
+    --Sec: #00ffeb;
+
+    /*? Cards bg*/
+    --Sender: #ff5100;
+    --Addressee: rgb(37, 37, 37);
+}
+
+.Light{
+    --BG: #FFFFFF;
+    --Contatos_hover_BG: #DBDBDB;
+
+    --Header_BG: #EDEDED;
+    --Borda: #EEEBE8;
+
+    --Textos_Normal: rgb(0, 0, 0);
+    --Textos_PlaceHolder: #ffffff96;
+
+    --Mesage_INP_BG: #FFFFFF;
+
+    /*! cores solidas*/
+    --Orange: rgb(255, 81, 0);
+
+    /*cores do site*/
+    --Pri: #ca00ff;
+    --Sec: #00ffeb;
+}
