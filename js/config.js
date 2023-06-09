@@ -58,6 +58,20 @@ function ChangeHourFormat() {
     UpdateChat(Chat)
 }
 
-/*Setando textos na tela*/
+/*Setando Foto na tela*/
 let UserPfp = document.getElementById('UserPfp')
-UserPfp.src = userData[2]
+UserPfp.src = userData[3]
+
+// Setando Chats que o usuario faz parte
+var Contacts = document.getElementById('Contacts')
+
+const Contact_Card = (Contact) => `
+    <div class="Contato_Card">
+        <div class="ContactPFP">
+            <img ondragstart="return false" src="${Contact.Pfp}" id="ContactImage">
+        </div>
+        <div class="textos">
+            <p class="Nome">${Contact.Nome}</p>
+        </div>
+    </div>
+`

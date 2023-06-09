@@ -9,7 +9,7 @@ let ImageInput = document.getElementById('ImageInput')
 var Chat = []
 var loaded = false
 
-var UserName = userData[1]
+var UserName = userData[2]
 
 
 const ChatMessageCardAddressee = (message) => `
@@ -115,7 +115,7 @@ function SendMessage() {
     var Timestamp = new Date().toLocaleString('pt-BR', { hour: 'numeric', minute: 'numeric', hour12: false })
 
     var mesg = {
-        pfp: userData[2],
+        pfp: userData[3],
         nome: UserName,
         hora: Timestamp,
         Text: MessageINP.value,
@@ -130,11 +130,11 @@ function SendMessage() {
 LoadChatData("Admin")
 function UpdateChat(data) {
     ChatContainer.innerHTML = ""
-    Chat = data
+    Chat = data[1]
 
     var adres_notificatios = false
 
-    data.forEach(mensagem => {
+    Chat.forEach(mensagem => {
         if (mensagem.nome == UserName) {
             ChatContainer.innerHTML += ChatMessageCardSender(mensagem)
             adres_notificatios = false

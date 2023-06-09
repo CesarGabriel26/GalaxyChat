@@ -29,10 +29,11 @@ function LoadChatData(Chat_Name) {
     DB.ref(`Chats/${Chat_Name}`).on('value', (Snapshot) => {
 
         Snapshot.forEach(chat => {
-            data = chat.val()
+            data.push(chat.val())
         })
         
         if (data != undefined) {
+            console.log(data);
             UpdateChat(data)
         }
     });
@@ -71,4 +72,8 @@ function LoadUserData(Email) {
             ExecuteLogin(data)
         }
     });
+}
+
+function GetChatData(chat) {
+    
 }

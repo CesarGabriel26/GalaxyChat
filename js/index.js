@@ -56,7 +56,8 @@ function SingUp_() {
             Name: Nome,
             Email: Email,
             Senha: Senha,
-            Pfp: ImagePath
+            Pfp: ImagePath,
+            ChatsAdd: []
         }
 
         SaveUserData(User,Email)
@@ -89,8 +90,7 @@ function LogIn_() {
 
 function ExecuteLogin(Data) {
     var Senha = PasswordLogIn.value
-    console.log(Data[3]);
-    if(Data[3] === Senha){
+    if(Data[4] === Senha){
         alert('Bem vindo ao sistema')
 
         localStorage.setItem('GalaxyChatUserData',JSON.stringify(Data))
