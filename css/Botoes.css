@@ -22,6 +22,7 @@ button {
     cursor: pointer;
 }
 
+.FileButton,
 #FileButton,
 button.Normal {
     background: var(--Normal_Bg);
@@ -29,6 +30,7 @@ button.Normal {
     font-size: 20px;
 }
 
+.FileButton:hover,
 #FileButton:hover,
 button.Normal:hover {
     background: var(--Normal_Hover);
@@ -44,6 +46,7 @@ button.chatBtn:hover {
     background: var(--Send_Bg_Hover);
 }
 
+button.Emoji_Button,
 button.HeaderBTN {
     background: transparent;
     color: var(--Textos_Normal);
@@ -53,10 +56,25 @@ button.HeaderBTN svg {
     width: 30px;
     height: 30px;
 }
+button.Emoji_Button:hover,
 button.HeaderBTN:hover {
     background: var(--Send_Bg_Hover);
 }
 
+button.Emoji_Button {
+    margin: 3px;
+}
+
+button.OpcaoBTN {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    margin-left: 10px;
+}
+button.OpcaoBTN.L {
+    margin: 0;
+    margin-right: 5px;
+}
 
 
 /*Togle buttons  Color_Mode_Button ==================================================================*/

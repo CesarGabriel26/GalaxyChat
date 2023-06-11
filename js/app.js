@@ -1,3 +1,5 @@
+
+
 let ChatContainer = document.getElementById('Chat')
 
 // ! Inputs Do usuario
@@ -6,7 +8,6 @@ let ImageInputBtn = document.getElementById('ImageInputBtn')
 let ImageInput = document.getElementById('ImageInput')
 
 // ? carregando dados iniciais do chat
-var Chat = []
 var loaded = false
 
 var UserName = userData[2]
@@ -29,7 +30,7 @@ const ChatMessageCardAddressee = (message) => `
                     <p class="Hora">${ReturnHour(message.hora)}</p>
                 </div>
                 ${ReturnImage(message.image)}
-                <p class="Mensagem">${message.Text}</p>
+                <p class="Mensagem" id="Mensagem">${Translate_Code_To_Emoji(message.Text)}</p>
             </div>
         </div>
     `
@@ -41,7 +42,7 @@ const ChatMessageCardSender = (message) => `
                 <p>${message.nome}</p>
             </div>
             ${ReturnImage(message.image)}
-            <p class="Mensagem">${message.Text}</p>
+            <p class="Mensagem" id="Mensagem">${Translate_Code_To_Emoji(message.Text)}</p>
         </div>
         <svg class="MesgIcon" viewBox="0 0 8 13" height="13" width="8">
             <path opacity="0.13" d="M5.188,1H0v11.193l6.467-8.625 C7.526,2.156,6.958,1,5.188,1z"></path>
@@ -57,8 +58,8 @@ const ChatMessageCardSender = (message) => `
 function ReturnImage(img) {
     if (img != "") {
         if (img[1] == "video/mp4") {
-            return `<video controls src="${img[0]}" style="height: 200px;"></video>`
-        }else if (img[1] == "image/png" || img[1] == "image/gif" || img[1] == "image/jpeg"){
+            return `<video controls controlsList="nodownload" src="${img[0]}" style="height: 200px;"></video>`
+        } else if (img[1] == "image/png" || img[1] == "image/gif" || img[1] == "image/jpeg") {
             return `<img src= "${img[0]}" style="height: 200px;">`
         }
     } else {
@@ -100,11 +101,40 @@ if (ImageInput) {
         const reader = new FileReader();
 
         reader.addEventListener('load', () => {
-            ImagePath = [reader.result,file.type]
+            ImagePath = [reader.result, file.type]
+            Midia.innerHTML = `
+                ${ReturnImage(ImagePath)}
+                <button onclick="Close_Cear_Prev()" class="chatBtn ONTop"> 
+                    <svg height="40px" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg>
+                </button>
+            `
+            ShowMidaPrev()
         })
         reader.readAsDataURL(file);
     })
 }
+
+function Close_Cear_Prev() {
+    ImagePath = ""
+    Midia.innerHTML =""
+    Midia.style.left = "-1000px"
+    PrevContainer.classList.remove('Ativo')
+}
+
+/*================================================================================*/
+var Chat_Array = []
+var chat_Prim = []
+
+
+LoadChatData(CurrentChat[0])
+userData[0].forEach((ch, i) =>{
+    if (i >= userData[0].length) {
+        LoadContacts = false
+        console.log(LoadContacts);
+    }
+
+    LoadContactsDT(ch)
+})
 
 function SendMessage() {
 
@@ -122,19 +152,32 @@ function SendMessage() {
         image: ImagePath
     }
 
-    Chat.push(mesg)
-    SaveChatData(Chat, "Admin")
+    Chat_Array.push(mesg)
+    SaveChatData(Chat_Array,ContactImage.src, CurrentChat[0])
+    //DebugSaveChatData(Chat_Array)
     MessageINP.value = ""
     ImagePath = ""
 }
-LoadChatData("Admin")
+
 function UpdateChat(data) {
     ChatContainer.innerHTML = ""
-    Chat = data[1]
 
+    chat_Prim = data
+    Chat_Array = chat_Prim[1]
+
+    if (Chat_Array == undefined || chat_Prim.length == 0 || chat_Prim.length > 2) {
+        return
+    }
+
+    SpawnMessages(Chat_Array)
+
+    loaded = true
+
+}
+
+function SpawnMessages(array) {
     var adres_notificatios = false
-
-    Chat.forEach(mensagem => {
+    array.forEach(mensagem => {
         if (mensagem.nome == UserName) {
             ChatContainer.innerHTML += ChatMessageCardSender(mensagem)
             adres_notificatios = false
@@ -143,13 +186,18 @@ function UpdateChat(data) {
             adres_notificatios = true
         }
 
+        Mensagem_Font = document.querySelectorAll('#Mensagem')
+        Mensagem_Font.forEach(msg =>{
+            msg.style.fontSize = `${FontSize}px`
+        })
+
         var cards = ChatContainer.getElementsByClassName('Card')
         cards[cards.length - 1].scrollIntoView()
     });
-    if (adres_notificatios && loaded) {
+    if (adres_notificatios && loaded && array[array.length - 1].nome != "Omega") {
         PlaySound()
+        notify(array[array.length - 1].nome, array[array.length - 1].Text, array[array.length - 1].pfp)
     }
-    loaded = true
 }
 
 function PlaySound() {

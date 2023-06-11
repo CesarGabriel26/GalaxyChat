@@ -28,6 +28,7 @@ main {
     width: 70%;
     position: relative;
     transition: .5s ease-in-out;
+    overflow: hidden;
 }
 
 .ConfigHeader,
@@ -68,10 +69,52 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0;
-    
+    z-index: 2;
+}
+
+.TextInput .File_Previl-Emojis {
+    position: absolute;
+    height: 250px;
+    width: 98%;
+    top: -250px;
+    left: -150%;
+    background: var(--Header_BG);
+    border: 2px solid var(--Borda);
+    border-left: none;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TextInput .File_Previl-Emojis.Ativo {
+    left: 0%;
+}
+
+.TextInput .File_Previl-Emojis #EmojisContainer {
+    position: relative;
+    top: 0;
+    left: -1000;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.TextInput .File_Previl-Emojis #EmojisContainer #Container {border-bottom: 2px solid var(--Borda);}
+
+.TextInput .File_Previl-Emojis #Midia {
+    position: relative;
+    top: 0;
+    left: -1000;
+}
+
+.TextInput .File_Previl-Emojis .ONTop {
+    position: absolute;
+    top: 0px;
 }
 
 .TextInput input {
@@ -93,10 +136,13 @@ main {
     padding: 10px;
     border-bottom: 2px solid var(--Contatos_hover_BG);
     transition: .5s ease-in-out;
+    cursor: pointer;
 }
+
 .Contato_Card:hover {
     background: var(--Contatos_hover_BG);
 }
+
 .ContactPFP img,
 .ContactPFP {
     overflow: hidden;
@@ -104,6 +150,7 @@ main {
     width: 60px;
     border-radius: 50%;
 }
+
 .textos {
     color: var(--Textos_Normal);
     margin-left: 10px;
@@ -112,18 +159,60 @@ main {
     justify-content: center;
     user-select: none;
 }
-.textos p {width: fit-content;}
 
-/*todo Configurações*/
-.Configs {
-    width: 70%;
+.textos p {
+    width: fit-content;
+}
+
+/*CNC*/
+#CNC {
+    display: none;
     height: 100%;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     background: var(--BG);
+
     position: absolute;
-    transition: .5s ease-in-out;
-    right: -1000;
+    top: 0;
 }
 
-.Main {
-    padding: 10px;
+#CNC input[type="file"] {
+    position: absolute;
+    top: -2000;
 }
+
+#CNC input[type="text"] {
+    padding-right: 10px;
+    padding-left: 10px;
+
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+
+    border: none;
+    outline: none;
+    background: var(--Mesage_INP_BG);
+}
+
+#CNC .botoes {
+    width: 400px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#CNC .FileButton {
+    height: 40px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s ease-in-out;
+}
+

@@ -1,0 +1,359 @@
+<!DOCTYPE html5>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/Chat.css">
+    <link rel="stylesheet" href="css/Botoes.css">
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+</head>
+
+<body style="background: var(--BG);">
+
+    <main style="height: fit-content;">
+
+        <div id="Color_Mode_Button" class="Color_Mode_Button">
+
+            <div class="Sol_Lua">
+                <div class="objetos">
+                    <div class="Circulo"></div>
+                    <div class="Circulo_Lua"></div>
+                </div>
+            </div>
+
+            <div class="nuvens">
+                <div class="Circulo_nuven Um"></div>
+                <div class="Circulo_nuven Dois"></div>
+                <div class="Circulo_nuven Tres"></div>
+                <div class="Circulo_nuven Quatro"></div>
+            </div>
+
+        </div>
+
+        <button class="Normal" id="btn-show-notification">Notify Me!</button>
+
+        <button class="Normal" onclick="Emojis()" data-Emoji="😁">Get emoji</button>
+        <p style="font-size: 30px;" id="Rando_emoji"></p>
+        <i id="Rando_emoj" class="em em-flag-br"></i>
+
+    </main>
+
+    <main style="height: fit-content;">
+        <input id="INP" style="height: 40px; color: black;" type="text">
+
+        <p id="Result">Resultado Aqui </p>
+    </main>
+
+    <main style="height: fit-content;">
+
+        <p onclick="AtivarCapturaDeTecla()" id="P_INPUT"
+            style="
+                color:black;height: 40px; 
+                width: 100%; 
+                background:white; 
+                cursor:text;
+                display: flex;
+                align-items: center;
+
+            "
+            >
+        </p>
+
+    </main>
+
+    <script>
+        let P_INPUT = document.getElementById('P_INPUT')
+        var Active = false
+        var texto = ""
+
+        const NewEmojiData2 = [
+            "--1",
+            "-1",
+            "100",
+            "1234",
+            "8ball",
+            "a",
+            "ab",
+            "abacus",
+            "abc",
+            "abcd",
+            "accept",
+            "admission_tickets",
+            "adult",
+            "aerial_tramway",
+            "airplane",
+            "airplane_arriving",
+            "airplane_departure",
+            "alarm_clock",
+            "alembic",
+            "alien",
+            "ambulance",
+            "amphora",
+            "anchor",
+            "angel",
+            "anger",
+            "angry",
+            "anguished",
+            "ant",
+            "apple",
+            "aquarius",
+            "aries",
+            "arrow_backward",
+            "arrow_double_down",
+            "arrow_double_up",
+            "arrow_down",
+            "arrow_down_small",
+            "arrow_forward",
+            "arrow_heading_down",
+            "arrow_heading_up",
+            "arrow_left",
+            "arrow_lower_left",
+            "arrow_lower_right",
+            "arrow_right",
+            "arrow_right_hook",
+            "arrow_up",
+            "arrow_up_down",
+            "arrow_up_small",
+            "arrow_upper_left",
+            "arrow_upper_right",
+            "arrows_clockwise",
+            "arrows_counterclockwise",
+            "art",
+            "articulated_lorry",
+            "astonished",
+            "athletic_shoe",
+            "atm",
+            "atom_symbol",
+            "avocado",
+            "b",
+            "baby",
+            "baby_bottle",
+            "baby_chick",
+            "baby_symbol",
+            "back",
+            "bacon",
+            "badger",
+            "badminton_racquet_and_shuttlecock",
+            "bagel"
+        ]
+
+
+
+        function keyPressHandler(event) {
+            Check()
+            console.log(texto);
+            if (Active) {
+                // Verifica se o evento está disponível nas diferentes versões dos navegadores
+                event = event || window.event;
+
+                // Obtém o código da tecla pressionada
+                var key_Code = event.keyCode || event.which;
+                //console.log(key_Code);
+
+                // Obtém o caractere correspondente ao código da tecla
+                var keyChar = String.fromCharCode(key_Code);
+                //console.log(keyChar);
+
+                // Exibe o código da tecla e o caractere correspondente no console
+                texto += keyChar
+            }
+        }
+
+        function keydownHandler(event) {
+            Check()
+            // Verifica se o evento está disponível nas diferentes versões dos navegadores
+            event = event || window.event;
+
+            // Obtém o código da tecla pressionada
+            var keyCode = event.keyCode || event.which;
+            // Verifica se a tecla pressionada é a tecla Backspace
+            if (keyCode === 8) {
+                
+
+
+                var a = texto.slice(0, -1)
+                texto = a
+            }
+        }
+
+        document.addEventListener("keydown", keydownHandler);
+        document.addEventListener("keyup", Check);
+        document.addEventListener("keypress", keyPressHandler);
+
+        function AtivarCapturaDeTecla() {
+            console.log("Teclas Ativadas");
+            P_INPUT.innerHTML = ""
+            Active = true
+        }
+
+        function Check() {
+            var value_Text = texto.split(" ")
+            var newArrayValue = []
+
+            value_Text.forEach((code, i) => {
+
+                if (NewEmojiData2.indexOf(code) > -1) {
+                    newArrayValue.push(`&nbsp; <i id="Rando_emoj" class="em em-${code}"></i> &nbsp;`)
+                } else {
+                    newArrayValue.push(code)
+                }
+            });
+
+            P_INPUT.innerHTML = newArrayValue.join(' ');
+
+        }
+
+    </script>
+
+    <!---->
+    <script>
+        const NewEmojiData = [
+            "--1",
+            "-1",
+            "100",
+            "1234",
+            "8ball",
+            "a",
+            "ab",
+            "abacus",
+            "abc",
+            "abcd",
+            "accept",
+            "admission_tickets",
+            "adult",
+            "aerial_tramway",
+            "airplane",
+            "airplane_arriving",
+            "airplane_departure",
+            "alarm_clock",
+            "alembic",
+            "alien",
+            "ambulance",
+            "amphora",
+            "anchor",
+            "angel",
+            "anger",
+            "angry",
+            "anguished",
+            "ant",
+            "apple",
+            "aquarius",
+            "aries",
+            "arrow_backward",
+            "arrow_double_down",
+            "arrow_double_up",
+            "arrow_down",
+            "arrow_down_small",
+            "arrow_forward",
+            "arrow_heading_down",
+            "arrow_heading_up",
+            "arrow_left",
+            "arrow_lower_left",
+            "arrow_lower_right",
+            "arrow_right",
+            "arrow_right_hook",
+            "arrow_up",
+            "arrow_up_down",
+            "arrow_up_small",
+            "arrow_upper_left",
+            "arrow_upper_right",
+            "arrows_clockwise",
+            "arrows_counterclockwise",
+            "art",
+            "articulated_lorry",
+            "astonished",
+            "athletic_shoe",
+            "atm",
+            "atom_symbol",
+            "avocado",
+            "b",
+            "baby",
+            "baby_bottle",
+            "baby_chick",
+            "baby_symbol",
+            "back",
+            "bacon",
+            "badger",
+            "badminton_racquet_and_shuttlecock",
+            "bagel"
+        ]
+
+        function Emojis() {
+            var i = parseInt(Math.random() * NewEmojiData.length)
+            //let Rando_emoji = document.getElementById('Rando_emoji')
+            let Rando_emoj = document.getElementById('Rando_emoj')
+
+            //Rando_emoji.innerHTML = `Emoji gerado: ${EmojiData[i]} no index ${i}`
+
+            var NewEmoji = `em-${NewEmojiData[i]}`
+
+            Rando_emoj.classList.replace(Rando_emoj.classList.item(1), NewEmoji)
+        }
+
+    </script>
+
+
+    <script>
+
+        let Color_Mode_Button = document.getElementById('Color_Mode_Button')
+
+        Color_Mode_Button.addEventListener('click', () => {
+            if (Color_Mode_Button.classList.contains('Ativo')) {
+                Color_Mode_Button.classList.remove('Ativo')
+            } else {
+                Color_Mode_Button.classList.add('Ativo')
+            }
+        })
+
+    </script>
+
+    <script>
+
+        if ('Notification' in window) {
+            console.log('Navegador suporta notificações')
+            GetPermission()
+        } else {
+            console.error('Navegador não suporta notificações')
+        }
+
+        function GetPermission() {
+            if (Notification.permission === 'granted') {
+                console.log('Permição de notificação consedida');
+            } else {
+                Notification.requestPermission().then((res) => {
+                    if (res === 'granted') {
+                        console.log('Permição de notificação consedida');
+                    } else if (res === 'denied') {
+                        console.log('Permição de notificação recusada');
+                    } else if (res === 'default') {
+                        console.log('Permição de notificação não entregue');
+                        GetPermission()
+                    }
+                })
+            }
+        }
+
+        function notify(User, Message, Icon) {
+            var notification = new Notification(User, {
+                body: Message,
+                icon: Icon,
+                vibrate: [200, 100, 200,
+            });
+
+            setTimeout(() => {
+                notification.close()
+            }, 5000)
+        }
+
+    </script>
+
+
+
+
+</body>
+
+</html>

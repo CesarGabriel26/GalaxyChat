@@ -1,6 +1,7 @@
 .Card {
     display: flex;
     position: relative;
+    color: white;
 }
 
 .CardPFP img,
@@ -18,23 +19,29 @@
     margin-right: 10px;
     padding: 10px;
     font-size: 15px;
-
+    color: white;
     border-radius: 10px;
 }
 
 .CardTextos .Topo {
     display: flex;
+    color: white;
+}
+.CardTextos .Topo p {
+    color: white;
 }
 
 
 .Hora {
     margin-left: 10px;
     margin-right: 10px;
+    color: white;
 }
 
 .Mensagem {
     max-width: 300px;
     margin-top: 10px;
+    color: white;
 }
 
 /* card do sender*/

@@ -10,7 +10,7 @@ let ConfirmPasswordSingUp = document.querySelector('#SingUp #ConfirmPassword')
 let ImagePrevil = document.getElementById('ImagePrevil')
 let FileINP = document.getElementById('FileINP')
 
-let EmailLogIn = document.querySelector('#login #Email')
+let NomeLogIn = document.querySelector('#login #Username')
 let PasswordLogIn = document.querySelector('#login #Password')
 
 var ImagePath = ""
@@ -57,10 +57,10 @@ function SingUp_() {
             Email: Email,
             Senha: Senha,
             Pfp: ImagePath,
-            ChatsAdd: []
+            ChatsAdd: ['Admin']
         }
 
-        SaveUserData(User,Email)
+        SaveUserData(User,Nome)
 
     }
 }
@@ -80,11 +80,11 @@ function ValidarSingUp(Nome,Email,Senha,ConfSenha,Image) {
 }
 
 function LogIn_() {
-    var Email = EmailLogIn.value
+    var Nome = NomeLogIn.value
     var Senha = PasswordLogIn.value
 
-    if (ValidarLogIn(Email,Senha)) {
-        LoadUserData(Email)
+    if (ValidarLogIn(Nome,Senha)) {
+        LoadUserData(Nome)
     }
 }
 

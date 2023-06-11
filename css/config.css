@@ -1,0 +1,57 @@
+.Configs {
+    width: 40%;
+    height: 100%;
+    background: var(--BG);
+    position: absolute;
+    transition: .5s ease-in-out;
+    right: -1000;
+    border-left: 2px solid var(--Contatos_hover_BG);
+}
+
+.Main {
+    padding: 10px;
+}
+
+.ConfigTexts {
+    width: 70px;
+    height: 30px;
+    background: var(--Header_BG);
+    border-radius: 20px;
+    border: 2px solid var(--Borda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.Option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--Contatos_hover_BG);
+    padding: 10px;
+}
+
+.OptionColum {
+    border-bottom: 2px solid var(--Contatos_hover_BG);
+    padding: 10px;
+}
+
+.Option.Margin {
+    margin-top: 20px;
+}
+
+.Option h3 {
+    margin-right: 30px;
+}
+
+.Option .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60px;
+    
+}

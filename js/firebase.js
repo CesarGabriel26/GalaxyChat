@@ -15,45 +15,56 @@ firebase.initializeApp(firebaseConfig);
 // ! referenciando database
 var DB = firebase.database()
 
-const SaveChatData = (Array, Chat) => {
-    var NewForm = DB.ref('Chats').child(Chat);
+const SaveChatData = (Array, Image, Chat_) => {
+    var NewForm = DB.ref('Chats').child(Chat_);
 
     NewForm.update({
+        ChatImage: Image,
         messages: Array
     })
 }
 
 function LoadChatData(Chat_Name) {
-    var data = []
-
-    DB.ref(`Chats/${Chat_Name}`).on('value', (Snapshot) => {
-
+    DB.ref(`Chats/${Chat_Name}`).on('child_added', (Snapshot) => {
+        var data = []
         Snapshot.forEach(chat => {
             data.push(chat.val())
         })
-        
+
         if (data != undefined) {
-            console.log(data);
             UpdateChat(data)
         }
     });
 
-    DB.ref(`Chats/${Chat_Name}`).on('child_added', (Snapshot) => {
-
+    DB.ref(`Chats/${Chat_Name}`).on('value', (Snapshot) => {
+        var data = []
         Snapshot.forEach(chat => {
-            data = chat.val()
+            data.push(chat.val())
+
         })
-        
+
         if (data != undefined) {
             UpdateChat(data)
         }
-    });
 
-    
-    
+    });
 }
 
-function SaveUserData(Array,Index) {
+function LoadContactsDT(id) {
+    DB.ref(`Chats/${id}`).on('value', (Snapshot) => {
+        var data = []
+        Snapshot.forEach(chat => {
+            data.push(chat.val())
+
+        })
+
+        if (data != undefined && LoadContacts) {
+            LoadContactsChats(id, data)
+        }
+    });
+}
+
+function SaveUserData(Array, Index) {
     var NewForm = DB.ref('Users').child(Index);
 
     NewForm.update(Array)
@@ -67,13 +78,9 @@ function LoadUserData(Email) {
         Snapshot.forEach(user => {
             data.push(user.val())
         })
-        
+
         if (data != undefined) {
             ExecuteLogin(data)
         }
     });
-}
-
-function GetChatData(chat) {
-    
 }
