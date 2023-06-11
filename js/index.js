@@ -57,7 +57,7 @@ function SingUp_() {
             Email: Email,
             Senha: Senha,
             Pfp: ImagePath,
-            ChatsAdd: ['Admin']
+            ChatsAdd: ['Global']
         }
 
         SaveUserData(User,Nome)
