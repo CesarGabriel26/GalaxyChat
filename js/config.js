@@ -139,8 +139,11 @@ var Contacts = document.getElementById('Contacts')
 var ContactImage = document.getElementById('ContactImageHeader')
 var ContactName = document.getElementById('ContactName')
 
-ContactName.innerHTML = CurrentChat[0]
-ContactImage.src = CurrentChat[1]
+if (CurrentChat) {
+    ContactName.innerHTML = CurrentChat[0]
+    ContactImage.src = CurrentChat[1]
+}
+
 
 const Contact_Card = (Contact, name) => `
     <div onclick="Change_Chat('${name}','${Contact[0]}')" class="Contato_Card">

@@ -134,7 +134,9 @@ userData[0].forEach((ch, i) =>{
 
     LoadContactsDT(ch)
 })
-LoadChatData(CurrentChat[0])
+if (CurrentChat) {
+    LoadChatData(CurrentChat[0])
+}
 
 
 function SendMessage() {
