@@ -127,15 +127,14 @@ var Chat_Array = []
 var chat_Prim = []
 
 
-LoadChatData(CurrentChat[0])
 userData[0].forEach((ch, i) =>{
     if (i >= userData[0].length) {
         LoadContacts = false
-        console.log(LoadContacts);
     }
 
     LoadContactsDT(ch)
 })
+LoadChatData(CurrentChat[0])
 
 
 function SendMessage() {
