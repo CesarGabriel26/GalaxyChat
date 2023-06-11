@@ -1,3 +1,11 @@
+::-webkit-scrollbar {
+    background: var(--Scroll_BG);
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--Scroll_thumb_BG);
+}
+
 main {
     height: 100%;
     width: 100%;
@@ -75,10 +83,12 @@ main {
     z-index: 2;
 }
 
+/*--------------------------------------------------------*/
+
 .TextInput .File_Previl-Emojis {
     position: absolute;
     height: 250px;
-    width: 98%;
+    width: 100%;
     top: -250px;
     left: -150%;
     background: var(--Header_BG);
@@ -116,6 +126,8 @@ main {
     position: absolute;
     top: 0px;
 }
+
+/*--------------------------------------------------------*/
 
 .TextInput input {
     height: 40px;

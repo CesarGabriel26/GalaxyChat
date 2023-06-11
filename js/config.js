@@ -6,6 +6,8 @@ var LoadContacts = true
 
 var userData = JSON.parse(localStorage.getItem('GalaxyChatUserData'))
 var CurrentChat = JSON.parse(localStorage.getItem('GalaxyChatCurrentChat'))
+let MessageINP = document.getElementById('Message')
+
 /*Variaveis de configuração*/
 var Hour_12_Format = false
 var FontSize = 15
@@ -16,7 +18,7 @@ function Show_Config() {
     if (inver) {
         Config.style.right = "-1000"
         inver = false
-    }else {
+    } else {
         Config.style.right = "0"
         inver = true
     }
@@ -45,11 +47,11 @@ let PrevContainer = document.querySelector('.File_Previl-Emojis')
 let EmojisContainer = document.getElementById('EmojisContainer')
 
 TogleButons.forEach(TogleButton => {
-    TogleButton.addEventListener('click', ()=>{
+    TogleButton.addEventListener('click', () => {
         if (TogleButton.classList.contains('Ativo')) {
-            TogleButton.classList.remove('Ativo')   
+            TogleButton.classList.remove('Ativo')
             eval(TogleButton.getAttribute('data-function'))
-        }else {
+        } else {
             TogleButton.classList.add('Ativo')
             eval(TogleButton.getAttribute('data-function'))
         }
@@ -58,15 +60,16 @@ TogleButons.forEach(TogleButton => {
 
 FontSizeText.innerHTML = `${FontSize}px`
 FontSizeText.innerHTML = `${FontSize}px`
-Mensagem_Font.forEach(msg =>{
+Mensagem_Font.forEach(msg => {
     msg.style.fontSize = `${FontSize}px`
 })
+
 //buttons functions
 
 function ChangeHourFormat() {
     if (Hour_12_Format) {
         Hour_12_Format = false
-    }else {
+    } else {
         Hour_12_Format = true
     }
     UpdateChat(chat_Prim)
@@ -77,50 +80,50 @@ function ChangeFontSize(Size) {
 
     if (FontSize < 15) {
         FontSize = 15
-    }else if (FontSize > 20){
+    } else if (FontSize > 20) {
         FontSize = 20
     }
 
-    Mensagem_Font.forEach(msg =>{
+    Mensagem_Font.forEach(msg => {
         msg.style.fontSize = `${FontSize}px`
     })
     FontSizeText.innerHTML = `${FontSize}px`
 }
 
 function ShowMidaPrev() {
+    console.log('Chamado');
     if (PrevContainer.classList.contains('Ativo')) {
-        
-        if(Midia_prev.style.left == "-1000px"){
-            Midia_prev.style.left = "0"
+        if (Midia_prev.style.left == "-1000px") {
+            Midia_prev.style.left = "30%"
             EmojisContainer.style.left = "-1000px"
-        }else {
+        } else {
             PrevContainer.classList.remove('Ativo')
             Midia_prev.style.left = "-1000px"
             EmojisContainer.style.left = "-1000px"
         }
-        
-    }else {
+
+    } else {
         PrevContainer.classList.add('Ativo')
-        Midia_prev.style.left = "0"
+        Midia_prev.style.left = "30%"
         EmojisContainer.style.left = "-1000px"
     }
 }
 
 function ShowEmojisContainer() {
     if (PrevContainer.classList.contains('Ativo')) {
-        if(EmojisContainer.style.left == "-1000px"){
+        if (EmojisContainer.style.left == "-1000px") {
             Midia_prev.style.left = "-1000px"
             ImagePath = ""
-            Midia_prev.innerHTML =""
+            Midia_prev.innerHTML = ""
 
             EmojisContainer.style.left = "0"
-        }else {
+        } else {
             PrevContainer.classList.remove('Ativo')
             EmojisContainer.style.left = "-1000px"
             Midia_prev.style.left = "-1000px"
         }
-        
-    }else {
+
+    } else {
         PrevContainer.classList.add('Ativo')
         EmojisContainer.style.left = "0"
     }
@@ -137,9 +140,9 @@ var ContactImage = document.getElementById('ContactImageHeader')
 var ContactName = document.getElementById('ContactName')
 
 ContactName.innerHTML = CurrentChat[0]
-ContactImage.src =  CurrentChat[1]
+ContactImage.src = CurrentChat[1]
 
-const Contact_Card = (Contact,name) => `
+const Contact_Card = (Contact, name) => `
     <div onclick="Change_Chat('${name}','${Contact[0]}')" class="Contato_Card">
         <div class="ContactPFP">
             <img ondragstart="return false" src="${Contact[0]}" id="ContactImage">
@@ -151,23 +154,23 @@ const Contact_Card = (Contact,name) => `
 `
 
 
-function LoadContactsChats(Chat_Name,data) {
-    Contacts.innerHTML += Contact_Card(data,Chat_Name)
+function LoadContactsChats(Chat_Name, data) {
+    Contacts.innerHTML += Contact_Card(data, Chat_Name)
     let ctcard = document.querySelectorAll('.Contato_Card')
     if (ctcard.length > userData[0].length) {
-        ctcard[ctcard.length-1].remove()
+        ctcard[ctcard.length - 1].remove()
     }
 }
 
 // ! chenge chat
-function Change_Chat(i,foto) {
+function Change_Chat(i, foto) {
     Chat_Array = []
     chat_Prim = []
     loaded = false
 
-    var dl = [i,foto]
+    var dl = [i, foto]
 
-    localStorage.setItem('GalaxyChatCurrentChat',JSON.stringify(dl))
+    localStorage.setItem('GalaxyChatCurrentChat', JSON.stringify(dl))
     CurrentChat = JSON.parse(localStorage.getItem('GalaxyChatCurrentChat'))
     ContactName.innerHTML = CurrentChat[0]
     ContactImage.src = foto
@@ -196,7 +199,7 @@ function ShowNewChatCreator() {
     if (visible) {
         CNC.style.display = 'none'
         visible = false
-    }else {
+    } else {
         CNC.style.display = 'flex'
         visible = true
     }
@@ -227,13 +230,13 @@ function CreateNewChat() {
             ChatsAdd: chts
         }
 
-        
+
         SaveUserData(TempData, userData[2])
 
-        localStorage.setItem('GalaxyChatUserData',JSON.stringify(TempData))
+        localStorage.setItem('GalaxyChatUserData', JSON.stringify(TempData))
         userData = JSON.parse(localStorage.getItem('GalaxyChatUserData'))
 
-        chts.forEach(ch =>{
+        chts.forEach(ch => {
             LoadContactsDT(ch)
         })
 
@@ -253,4 +256,16 @@ function ValidarCriacao(Nome) {
     }
 
     return true
+}
+
+//capturando tecla enter
+MessageINP.addEventListener('keypress',CheckIfEnter)
+
+function CheckIfEnter(event) {
+    event = event || window.event;
+  
+    var keyCode = event.keyCode || event.which;
+    if (keyCode === 13) {
+        SendMessage()
+    }
 }

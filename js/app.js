@@ -3,7 +3,6 @@
 let ChatContainer = document.getElementById('Chat')
 
 // ! Inputs Do usuario
-let MessageINP = document.getElementById('Message')
 let ImageInputBtn = document.getElementById('ImageInputBtn')
 let ImageInput = document.getElementById('ImageInput')
 
@@ -92,32 +91,34 @@ function Converter(time) {
 
 var ImagePath = ""
 ImageInputBtn.addEventListener('click', () => {
+    ImageInput.value = null;
     ImageInput.click()
 })
 
-if (ImageInput) {
-    ImageInput.addEventListener('change', () => {
-        const file = ImageInput.files[0]
-        const reader = new FileReader();
 
-        reader.addEventListener('load', () => {
-            ImagePath = [reader.result, file.type]
-            Midia.innerHTML = `
-                ${ReturnImage(ImagePath)}
-                <button onclick="Close_Cear_Prev()" class="chatBtn ONTop"> 
-                    <svg height="40px" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg>
-                </button>
-            `
-            ShowMidaPrev()
-        })
-        reader.readAsDataURL(file);
+ImageInput.addEventListener('change', () => {
+    var file = ImageInput.files[0]
+    var reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+        ImagePath = [reader.result, file.type]
+        Midia_prev.innerHTML = `
+            ${ReturnImage(ImagePath)}
+            <button onclick="Close_Cear_Prev()" class="chatBtn ONTop"> 
+                <svg height="40px" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg>
+            </button>
+        `
+        
+        ShowMidaPrev()
     })
-}
+    reader.readAsDataURL(file);
+})
+
 
 function Close_Cear_Prev() {
     ImagePath = ""
-    Midia.innerHTML =""
-    Midia.style.left = "-1000px"
+    Midia_prev.innerHTML =""
+    Midia_prev.style.left = "-1000px"
     PrevContainer.classList.remove('Ativo')
 }
 
@@ -136,6 +137,7 @@ userData[0].forEach((ch, i) =>{
     LoadContactsDT(ch)
 })
 
+
 function SendMessage() {
 
     if (MessageINP.value === "" && ImagePath === "") {
@@ -153,8 +155,8 @@ function SendMessage() {
     }
 
     Chat_Array.push(mesg)
-    SaveChatData(Chat_Array,ContactImage.src, CurrentChat[0])
-    //DebugSaveChatData(Chat_Array)
+    //SaveChatData(Chat_Array,ContactImage.src, CurrentChat[0])
+    DebugSaveChatData(Chat_Array)
     MessageINP.value = ""
     ImagePath = ""
 }
