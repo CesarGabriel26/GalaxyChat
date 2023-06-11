@@ -155,8 +155,8 @@ function SendMessage() {
     }
 
     Chat_Array.push(mesg)
-    //SaveChatData(Chat_Array,ContactImage.src, CurrentChat[0])
-    DebugSaveChatData(Chat_Array)
+    SaveChatData(Chat_Array,ContactImage.src, CurrentChat[0])
+    //DebugSaveChatData(Chat_Array)
     MessageINP.value = ""
     ImagePath = ""
 }
